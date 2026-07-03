@@ -70,6 +70,7 @@
   tbody td{padding:9px 12px;border-bottom:1px solid var(--line2);vertical-align:top;}
   tbody td.num{text-align:center;color:var(--muted);}
   tbody td.wrap{white-space:normal;max-width:280px;}
+  tbody td.wrap .clamp{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.35;}
   tbody tr:nth-child(even){background:var(--zebra);}
   tbody tr:hover{background:var(--accent-soft);}
   td.first,th.first{position:sticky;left:0;background:inherit;border-right:1px solid var(--line);}
@@ -387,6 +388,7 @@ function renderTable(){
         if(isSi(v))cell='<span class="pill si">'+esc(v)+'</span>';
         else if(norm(v)==='no')cell='<span class="pill no">'+esc(v)+'</span>';
       }
+      if(WRAPCOLS.indexOf(i)!==-1) cell='<div class="clamp" title="'+esc(v)+'">'+cell+'</div>';
       return '<td class="'+cls.join(' ')+'">'+cell+'</td>';
     }).join('')+'</tr>';
   }).join('');
